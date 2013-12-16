@@ -1,0 +1,11 @@
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\FireAndExplotion.exe
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\FireAndExplotion.pdb
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\obj\x86\Debug\FireAndExplotion.csprojResolveAssemblyReference.cache
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\obj\x86\Debug\FireAndExplotion.exe
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\obj\x86\Debug\FireAndExplotion.pdb
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\explosion.xnb
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\smoke.xnb
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\explotion2.xnb
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\explotion3.xnb
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\fireball.xnb
