@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using FireAndExplotion.View.Particles;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using System.Collections;
 
 namespace FireAndExplotion.View
 {
@@ -21,6 +24,7 @@ namespace FireAndExplotion.View
         Texture2D textureExplotion;
         Texture2D textureSplitter;
         Texture2D textureSmoke;
+        SoundEffect soundExplotion;
 
         private SmokeSystem smokeSystem;
         private ExplotionSystem explotion;
@@ -48,22 +52,18 @@ namespace FireAndExplotion.View
             textureExplotion = content.Load<Texture2D>("explotion3");
             textureSplitter = content.Load<Texture2D>("fireball");
             textureSmoke = content.Load<Texture2D>("smoke");
-        }
 
-        //Funktion för att starta om rök-simuleringen
-        internal void restart(float newX, float newY)
-        {
-            int scale = camera.GetScale();
-            this.splitterSystem = new SplitterSystem(new Vector2(newX / scale, newY / scale), scale);
-            this.explotion = new ExplotionSystem(new Vector2(newX / scale, newY / scale), scale);
-            this.smokeSystem = new SmokeSystem(new Vector2(newX / scale, newY / scale), scale);
-            this.smokeTrailSystem = new SmokeTrailSystem(new Vector2(newX / scale, newY / scale), scale);
+            soundExplotion = content.Load<SoundEffect>("explosion_sound");
+            soundExplotion.Play();
         }
 
         //Uppdaterar explotionen med förfluten tid
         internal void UpdateView(float elapsedGameTime)
         {
-            splitterSystem.Update(elapsedGameTime);
+            int width = (int)(m_fande_Model.Level.BoardWidth * camera.GetScale());
+            int height = (int)(m_fande_Model.Level.BoardHeight * camera.GetScale());
+
+            splitterSystem.Update(elapsedGameTime, width, height);
             explotion.Update(elapsedGameTime);
             smokeSystem.Update(elapsedGameTime);
             smokeTrailSystem.Update(elapsedGameTime);
@@ -81,6 +81,32 @@ namespace FireAndExplotion.View
             smokeSystem.Draw(spriteBatch, camera, textureSmoke);
 
             spriteBatch.End();
+        }
+
+        internal bool playerWantsToQuit()
+        {
+            return Keyboard.GetState().IsKeyDown(Keys.Escape);
+        }
+
+        internal bool doRestartExplotion()
+        {
+            return Mouse.GetState().LeftButton == ButtonState.Pressed;
+        }
+
+        internal void restartExplotion(ContentManager content)
+        {
+            MouseState mouseState = Mouse.GetState();
+            int scale = camera.GetScale();
+
+            float theX = (float)mouseState.X;
+            float theY = (float)mouseState.Y;
+
+            this.splitterSystem = new SplitterSystem(new Vector2(theX / scale, theY / scale), scale);
+            this.explotion = new ExplotionSystem(new Vector2(theX / scale, theY / scale), scale);
+            this.smokeSystem = new SmokeSystem(new Vector2(theX / scale, theY / scale), scale);
+            this.smokeTrailSystem = new SmokeTrailSystem(new Vector2(theX / scale, theY / scale), scale);
+
+            soundExplotion.Play();
         }
     }
 }

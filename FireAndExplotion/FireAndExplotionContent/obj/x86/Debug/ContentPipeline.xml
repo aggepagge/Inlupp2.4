@@ -46,6 +46,24 @@
       <Output>C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\fireball.xnb</Output>
       <Time>2013-12-12T23:51:27.2086165+01:00</Time>
     </Item>
+    <Item>
+      <Source>fire.wav</Source>
+      <Name>fire</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\fire.xnb</Output>
+      <Time>2013-12-16T15:40:13.6225669+01:00</Time>
+    </Item>
+    <Item>
+      <Source>explosion_sound.wav</Source>
+      <Name>explosion_sound</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\explosion_sound.xnb</Output>
+      <Time>2013-12-16T21:12:16.3749582+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

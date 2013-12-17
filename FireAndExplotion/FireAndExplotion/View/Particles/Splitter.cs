@@ -23,6 +23,8 @@ namespace FireAndExplotion.View.Particles
         private float size;
         private float delayTimeSeconds;
 
+        internal bool DeleateMe { get; private set; }
+
         //Konstruktor som tar seed, startpossition och start samt 
         //slut-tid för hur länge annimeringen ska köras
         public Splitter(int seed, Vector2 systemStartPossition, float startRunTime, float endRunTime)
@@ -46,6 +48,8 @@ namespace FireAndExplotion.View.Particles
 
             //gravitationen i X och Y-led
             gravity = new Vector2(0.0f, 2.8f);
+
+            DeleateMe = false;
         }
 
         internal void Update(float elapseTimeSeconds)
@@ -84,6 +88,9 @@ namespace FireAndExplotion.View.Particles
                 //Opaciteten ökas med t
                 float opacity = endValue * t + (1.0f - t) * startValue;
                 Color myColor = new Color(opacity, opacity, opacity, opacity);
+
+                if (opacity == 0)
+                    DeleateMe = true;
 
                 spriteBatch.Draw(texture, splitterRect, myColor);
             }

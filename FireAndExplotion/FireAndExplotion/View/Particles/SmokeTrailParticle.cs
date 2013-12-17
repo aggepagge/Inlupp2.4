@@ -14,6 +14,7 @@ namespace FireAndExplotion.View.Particles
         private Vector2 speed;
         private Vector2 gravity;
         private float lifetime = 0;
+        private static float MAX_LIFETIME = 3.0f;
         private static float NEW_SMOKE_TIME = 0.001f;
         private static float minSpeed = 1.0f;
         private static float maxSpeed = 1.6f;
@@ -25,6 +26,8 @@ namespace FireAndExplotion.View.Particles
         private float createSmoke = 0;
 
         private List<SmokeTrailSmoke> smoke = new List<SmokeTrailSmoke>();
+
+        internal bool DeleateMe { get; private set; }
 
         //Konstruktor som tar seed, startpossition och start samt 
         //slut-tid för hur länge annimeringen ska köras
@@ -49,6 +52,8 @@ namespace FireAndExplotion.View.Particles
 
             //gravitationen i X och Y-led
             gravity = new Vector2(0.0f, 0.3f);
+
+            DeleateMe = false;
         }
 
         internal void Update(float elapseTimeSeconds)
@@ -88,11 +93,26 @@ namespace FireAndExplotion.View.Particles
                 //Hämtar visuella kordinater från camera-klassen
                 Rectangle splitterRect = camera.getVisualCoordinates(possition.X, possition.Y, size);
 
-                spriteBatch.Draw(texture, splitterRect, Color.White);
+                //Variabler för uträkning av opacitet
+                float t = lifetime / MAX_LIFETIME;
+                float endValue = 0.0f;
+                float startValue = 1.0f;
+
+                if (t > 1.0f)
+                    t = 1.0f;
+
+                //Opaciteten ökas med t
+                float opacity = endValue * t + (1.0f - t) * startValue;
+                Color myColor = new Color(opacity, opacity, opacity, opacity);
+
+                if (opacity == 0)
+                    DeleateMe = true;
+
+                spriteBatch.Draw(texture, splitterRect, myColor);
 
                 foreach (SmokeTrailSmoke smokeTrail in smoke)
                 {
-                    smokeTrail.Draw(spriteBatch, camera, smokeTexture);
+                    smokeTrail.Draw(spriteBatch, camera, smokeTexture, opacity);
                 }
             }
         }

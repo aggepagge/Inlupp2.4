@@ -114,6 +114,7 @@
     <Compile Include="Controller\XNAController.cs" />
     <Compile Include="View\Camera.cs" />
     <Compile Include="View\FandE_View.cs" />
+    <Compile Include="View\ParticleCollection.cs" />
     <Compile Include="View\Particles\Explotion.cs" />
     <Compile Include="View\Particles\ExplotionSystem.cs" />
     <Compile Include="View\Particles\Smoke.cs" />

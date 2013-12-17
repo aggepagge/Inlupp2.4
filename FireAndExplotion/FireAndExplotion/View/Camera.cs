@@ -55,6 +55,17 @@ namespace FireAndExplotion.View
                                 );
         }
 
+        //Skapar en rektangel i Visuell storlek
+        internal Rectangle getLogicalCoordinates(float visualX, float visualY, float visualDimention)
+        {
+            return new Rectangle(
+                                    (int)(((visualX + widthMargin) / scaleX) - ((visualDimention / scaleX) / 2)),
+                                    (int)(((visualY + heightMargin) / scaleY) - ((visualDimention / scaleX) / 2)),
+                                    (int)(visualDimention / scaleX),
+                                    (int)(visualDimention / scaleY)
+                                );
+        }
+
         internal Rectangle getExplotionCoordinates(float modelX, float modelY, float modelDimention)
         {
             return new Rectangle(

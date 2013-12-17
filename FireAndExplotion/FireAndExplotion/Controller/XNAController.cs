@@ -72,7 +72,6 @@ namespace FireAndExplotion.Controller
             camera = new Camera(graphics.GraphicsDevice.Viewport);
 
             v_FandE_View = new FandE_View(graphics.GraphicsDevice, m_FandE_Model, camera, spriteBatch, Content);
-            v_FandE_View.LoadContent(Content);
         }
 
         /// <summary>
@@ -91,8 +90,11 @@ namespace FireAndExplotion.Controller
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (v_FandE_View.playerWantsToQuit())
                 this.Exit();
+
+            if(v_FandE_View.doRestartExplotion())
+                v_FandE_View.restartExplotion(Content);
 
             //Uppdaterar view
             v_FandE_View.UpdateView((float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -107,13 +109,6 @@ namespace FireAndExplotion.Controller
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.White);
-
-            //Om man klickat i fönstret så startas röken om
-            MouseState mouseState = Mouse.GetState();
-            if (mouseState.LeftButton == ButtonState.Pressed)
-            {
-                v_FandE_View.restart(mouseState.X, mouseState.Y);
-            }
 
             //Anropar draw-funktionen för View
             v_FandE_View.Draw((float)gameTime.ElapsedGameTime.TotalSeconds);

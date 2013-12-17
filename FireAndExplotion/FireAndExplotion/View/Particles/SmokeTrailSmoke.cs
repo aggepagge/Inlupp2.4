@@ -42,7 +42,7 @@ namespace FireAndExplotion.View.Particles
             }
         }
 
-        internal void Draw(SpriteBatch spriteBatch, Camera camera, Texture2D texture)
+        internal void Draw(SpriteBatch spriteBatch, Camera camera, Texture2D texture, float startOpacity)
         {
             //Hämtar visuella kordinater från camera-klassen
             Rectangle smokeRect = camera.getVisualCoordinates(possition.X, possition.Y, size);
@@ -50,7 +50,7 @@ namespace FireAndExplotion.View.Particles
             //Variabler för uträkning av opacitet
             float t = lifetime / MAX_LIFETIME;
             float endValue = 0.0f;
-            float startValue = 1.0f;
+            float startValue = startOpacity;
 
             if (t > 1.0f)
                 t = 1.0f;

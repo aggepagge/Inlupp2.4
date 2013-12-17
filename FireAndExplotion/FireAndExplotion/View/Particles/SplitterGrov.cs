@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using FireAndExplotion.Model;
 
 namespace FireAndExplotion.View.Particles
 {
@@ -15,14 +16,19 @@ namespace FireAndExplotion.View.Particles
         private Vector2 gravity;
         private static float minSpeed = 1.6f;
         private static float maxSpeed = 9.0f;
-        private static float minSize = 0.02f;
-        private static float maxSize = 0.03f;
+        private static float minSize = 0.01f;
+        private static float maxSize = 0.02f;
 
         private float size;
+        private int visualSize;
+        private int visualPossitionX;
+        private int visualPossitionY;
         private float sizeIncrease;
         private float speedIncreaseX;
         private float speedIncreaseY;
         private float delayTimeSeconds;
+
+        internal bool DeleateMe { get; private set; }
 
         //SplitterGrov åker i en rak bana (som dock påverkas av gravitation med gravity-variabeln)
         //Farten och storleken (X och Y-led) ökas med tiden vilket gör att SplitterGrov-objektet ser
@@ -53,9 +59,14 @@ namespace FireAndExplotion.View.Particles
 
             //gravitationen i X och Y-led
             gravity = new Vector2(0.0f, 20.4f);
+
+            DeleateMe = false;
+            visualSize = (int)(scale * size);
+            visualPossitionX = (int)(scale * possition.X);
+            visualPossitionY = (int)(scale * possition.Y); 
         }
 
-        internal void Update(float elapseTimeSeconds)
+        internal void Update(float elapseTimeSeconds, int width, int height)
         {
             delayTimeSeconds -= elapseTimeSeconds;
 
@@ -72,7 +83,18 @@ namespace FireAndExplotion.View.Particles
                 size += sizeIncrease;
                 speed.X += speedIncreaseX;
                 speed.Y += speedIncreaseY;
+
+                toRemove(width, height);
             }
+        }
+
+        private void toRemove(int width, int height)
+        {
+            if (   visualPossitionX + visualSize < 0
+                || visualPossitionY + visualSize > height
+                || visualPossitionX > width
+               ) 
+                DeleateMe = true;
         }
 
         internal void Draw(SpriteBatch spriteBatch, Camera camera, Texture2D texture)

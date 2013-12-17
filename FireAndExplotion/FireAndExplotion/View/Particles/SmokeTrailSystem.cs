@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace FireAndExplotion.View.Particles
     class SmokeTrailSystem
     {
         //Array för smoke-objekt
-        private SmokeTrailParticle[] smoketrailes;
+        private List<SmokeTrailParticle> smoketrailes;
         //Antal Smoke-objekt
         private const int MAX_SMOKETRAILS = 30;
 
@@ -22,29 +23,32 @@ namespace FireAndExplotion.View.Particles
         //Initsierar arrayen med Smoke-objekt
         internal SmokeTrailSystem(Vector2 startPossition, int scale)
         {
-            smoketrailes = new SmokeTrailParticle[MAX_SMOKETRAILS];
+            smoketrailes = new List<SmokeTrailParticle>(MAX_SMOKETRAILS);
 
             for (int i = 0; i < MAX_SMOKETRAILS; i++)
             {
-                smoketrailes[i] = new SmokeTrailParticle(i, startPossition, startRunTime, endRunTime);
+                smoketrailes.Add(new SmokeTrailParticle(i, startPossition, startRunTime, endRunTime));
             }
         }
 
         //Uppdaterar alla Smoke-objekt i arrayen
         internal void Update(float elapsedGameTime)
         {
-            for (int i = 0; i < MAX_SMOKETRAILS; i++)
+            foreach (SmokeTrailParticle smokeTrail in smoketrailes.ToList())
             {
-                smoketrailes[i].Update(elapsedGameTime);
+                if (!smokeTrail.DeleateMe)
+                    smokeTrail.Update(elapsedGameTime);
+                else
+                    smoketrailes.Remove(smokeTrail);
             }
         }
 
         //Anropar Draw-metoden för alla Smoke-objekt i arrayen
         internal void Draw(SpriteBatch spriteBatch, Camera camera, Texture2D texture, Texture2D textureSmoke)
         {
-            for (int i = 0; i < MAX_SMOKETRAILS; i++)
+            foreach (SmokeTrailParticle smokeTrail in smoketrailes)
             {
-                smoketrailes[i].Draw(spriteBatch, camera, texture, textureSmoke);
+                smokeTrail.Draw(spriteBatch, camera, texture, textureSmoke);
             }
         }
     }

@@ -48,6 +48,8 @@ namespace FireAndExplotion.View.Particles
         private static float maxSize = 0.4f;
         private float delayTimeSeconds;
 
+        internal bool DeleateMe { get; private set; }
+
         internal Explotion(int seed, Vector2 startPossition, int scale)
         {
             Random rand = new Random(seed);
@@ -80,6 +82,8 @@ namespace FireAndExplotion.View.Particles
 
             //Initsierar första rutan
             updateSprite();
+
+            DeleateMe = false;
         }
 
         //Uppdaterar explotionen
@@ -100,6 +104,7 @@ namespace FireAndExplotion.View.Particles
                     {
                         imageCount = 0;
                         stopExplotion = true;
+                        DeleateMe = true;
                     }
                     else
                     {
@@ -142,8 +147,6 @@ namespace FireAndExplotion.View.Particles
                 rotation += wait_time;
                 float circle = MathHelper.Pi * 2;
                 rotation = rotation % circle;
-
-
             }
         }
 

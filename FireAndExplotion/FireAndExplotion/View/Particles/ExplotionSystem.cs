@@ -10,36 +10,39 @@ namespace FireAndExplotion.View.Particles
     class ExplotionSystem
     {
         //Array för smoke-objekt
-        private Explotion[] explotions;
+        private List<Explotion> explotions;
         //Antal Smoke-objekt
         private const int MAX_EXPLOTIONS = 40;
 
         //Initsierar arrayen med Smoke-objekt
         internal ExplotionSystem(Vector2 startPossition, int scale)
         {
-            explotions = new Explotion[MAX_EXPLOTIONS];
+            explotions = new List<Explotion>(MAX_EXPLOTIONS);
 
             for (int i = 0; i < MAX_EXPLOTIONS; i++)
             {
-                explotions[i] = new Explotion(i, startPossition, scale);
+                explotions.Add(new Explotion(i, startPossition, scale));
             }
         }
 
         //Uppdaterar alla Smoke-objekt i arrayen
         internal void Update(float elapsedGameTime)
         {
-            for (int i = 0; i < MAX_EXPLOTIONS; i++)
+            foreach (Explotion explotion in explotions.ToList())
             {
-                explotions[i].Update(elapsedGameTime);
+                if (!explotion.DeleateMe)
+                    explotion.Update(elapsedGameTime);
+                else
+                    explotions.Remove(explotion);
             }
         }
 
         //Anropar Draw-metoden för alla Smoke-objekt i arrayen
         internal void Draw(SpriteBatch spriteBatch, Camera camera, Texture2D texture)
         {
-            for (int i = 0; i < MAX_EXPLOTIONS; i++)
+            foreach (Explotion explotion in explotions)
             {
-                explotions[i].Draw(spriteBatch, camera, texture);
+                explotion.Draw(spriteBatch, camera, texture);
             }
         }
     }

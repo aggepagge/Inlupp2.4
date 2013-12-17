@@ -11,11 +11,15 @@ namespace FireAndExplotion.Model
     {
         //Prop för startpossition (För explotion)
         public Vector2 StartPossition { get; private set; }
+        public float BoardWidth { get; private set; }
+        public float BoardHeight { get; private set; }
 
         //Initsierar startpossitionerna
         internal Level()
         {
-            StartPossition = new Vector2(XNAController.boardLogicWidth / 2, XNAController.boardLogicHeight / 2);
+            BoardWidth = XNAController.boardLogicWidth;
+            BoardHeight = XNAController.boardLogicHeight;
+            StartPossition = new Vector2(BoardWidth / 2, BoardHeight / 2);
         }
     }
 }

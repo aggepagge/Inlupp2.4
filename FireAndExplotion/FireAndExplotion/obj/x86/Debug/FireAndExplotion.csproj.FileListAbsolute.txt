@@ -9,3 +9,5 @@ C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\In
 C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\explotion2.xnb
 C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\explotion3.xnb
 C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\fireball.xnb
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\fire.xnb
+C:\Users\Agge\Documents\Visual Studio 2010\Projects\SpelProgrammering\TestOne\Inluppar\FireAndExplotion\FireAndExplotion\FireAndExplotion\bin\x86\Debug\Content\explosion_sound.xnb

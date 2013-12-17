@@ -32,6 +32,8 @@ namespace FireAndExplotion.View.Particles
 
         private float startOpacity;
 
+        internal bool DeleateMe { get; private set; }
+
         //Konstruktor som initsierar alla variabler
         public Smoke(int seed, Vector2 systemStartPossition, float scale)
         {
@@ -62,6 +64,8 @@ namespace FireAndExplotion.View.Particles
 
             //Vektor för gravitation 
             gravity = new Vector2(-0.8f, -1.0f);
+
+            DeleateMe = false;
         }
 
         //Uppdaterar rök-partickeln
@@ -110,6 +114,9 @@ namespace FireAndExplotion.View.Particles
                 //Opaciteten ökas med t
                 float opacity = endValue * t + (1.0f - t) * startValue;
                 Color myColor = new Color(opacity, opacity, opacity, opacity);
+
+                if (opacity == 0)
+                    DeleateMe = true;
 
                 //Ritar ut texturen med rotation
                 spriteBatch.Draw(texture, splitterRect, null, myColor, rotation, new Vector2(0, 0), SpriteEffects.None, 0);
